@@ -1,3 +1,13 @@
+type Query {
+	readTier: [Tier]
+}
+
+type Mutation {
+	createTier(input: TierInput!): Tier!
+	deleteTier(id: Int!): Tier!
+	updateTier(id: Int!, input: TierInput!): Tier!
+}
+
 type Tier {
 	id: ID
 	"""
@@ -8,5 +18,11 @@ type Tier {
 	"""
 	The tier's price per month, in cents
 	@example "100"
+	"""
+	price: Int
+}
+
+input TierInput {
+	name: String
 	price: Int
 }
