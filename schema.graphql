@@ -16,6 +16,10 @@ type Mutation {
 	createSocialNetwork(input: SocialNetworkInput!): SocialNetwork!
 	deleteSocialNetwork(id: Int!): SocialNetwork!
 	updateSocialNetwork(id: Int!, input: SocialNetworkInput!): SocialNetwork!
+
+	createBrandSocial(input: BrandSocialInput!): BrandSocial!
+	deleteBrandSocial(id: Int!): BrandSocial!
+	updateBrandSocial(id: Int!, input: BrandSocialInput!): BrandSocial!
 }
 
 type Tier {
