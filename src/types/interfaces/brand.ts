@@ -27,7 +27,7 @@ export interface iBrand {
 	 */
 	tier: iTier;
 	/**
-	 * Whether the brand has a payment due or not
+	 * Whether the brand has a due payment or not
 	 * @example false
 	 */
 	paymentDue: boolean;

@@ -14,8 +14,10 @@ export default class Tier extends Model<iTier> {
 	@PrimaryKey
 	@Column({ type: DataType.NUMBER, allowNull: false })
 	id: number;
+
 	@Column({ type: DataType.STRING, allowNull: false })
 	name: string;
+
 	@Column({ type: DataType.NUMBER, allowNull: false })
 	price: number;
 }

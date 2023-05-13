@@ -26,3 +26,40 @@ input TierInput {
 	name: String
 	price: Int
 }
+
+type Brand {
+	id: ID
+	"""
+	The brand's name
+	@example "Microsoft"
+	"""
+	name: String
+	"""
+	The brand's login email
+	@example "microsoft@outlook.com"
+	"""
+	email: String
+	"""
+	The password's hash
+	@example "5e884898da2804"
+	"""
+	passwordHash: String
+	"""
+	The brand's phone number
+	@example "555896448"
+	"""
+	phone: String
+	"""
+	The brand's payment tier (fk)
+	"""
+	tierId: Int
+	"""
+	The brand's payment tier (actual)
+	"""
+	tier: Tier
+	"""
+	Whether the brand has a due payment or not
+	@example false
+	"""
+	paymentDue: Boolean
+}
