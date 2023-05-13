@@ -9,7 +9,7 @@ export const createBrand = async (
 			email: string;
 			passwordHash: string;
 			phone: string;
-			fkBrand: number;
+			fkTier: number;
 			paymentDue: boolean;
 		};
 	},
@@ -21,7 +21,7 @@ export const createBrand = async (
 		email: args.input.email,
 		passwordHash: args.input.passwordHash,
 		phone: args.input.phone,
-		fkBrand: args.input.fkBrand,
+		fkTier: args.input.fkTier,
 		paymentDue: args.input.paymentDue
 	})) as any;
 
