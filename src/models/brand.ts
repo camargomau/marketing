@@ -32,9 +32,9 @@ export default class Brand extends Model<iBrand> {
 
 	@ForeignKey(() => Tier)
 	@Column({ field: "fkTier" })
-	tierId: number;
+	fkBrand: number;
 
-	@HasOne(() => Tier, { foreignKey: 'id', sourceKey: 'tierId' })
+	@HasOne(() => Tier, { foreignKey: 'id', sourceKey: 'fkBrand' })
 	tier: Tier
 
 	@Column({ type: DataType.BOOLEAN, allowNull: false })

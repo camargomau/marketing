@@ -62,7 +62,7 @@ type Brand {
 	"""
 	The brand's payment tier (fk)
 	"""
-	tierId: Int
+	fkBrand: Int
 	"""
 	The brand's payment tier (actual)
 	"""
@@ -79,7 +79,7 @@ input BrandInput {
 	email: String
 	passwordHash: String
 	phone: String
-	tierId: Int
+	fkBrand: Int
 	paymentDue: Boolean
 }
 

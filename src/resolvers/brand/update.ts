@@ -9,7 +9,7 @@ export const updateBrand = async (
 			email?: string;
 			passwordHash?: string;
 			phone?: string;
-			tierId?: number;
+			fkBrand?: number;
 			paymentDue?: boolean;
 		};
 	},
