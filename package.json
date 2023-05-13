@@ -4,9 +4,9 @@
 	"scripts": {
 		"compile": "tsc",
 		"start": "npm run compile && node ./dist/index.js",
-		"test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/**/*.test.ts'",
-		"prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-		"prettier-fix": "prettier --write ."
+		"test": "env TS_NODE_COMPILER_OPTIONS=iContext mocha -r ts-node/register iContext",
+		"prettier-format": "prettier --config .prettierrc iContext --write",
+		"prettier-fix": "prettier --write --use-tabs ."
 	},
 	"keywords": [],
 	"author": "",
