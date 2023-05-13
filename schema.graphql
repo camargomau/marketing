@@ -1,0 +1,12 @@
+type Tier {
+	id: ID
+	"""
+	The tier's name
+	@example "Basic"
+	"""
+	name: String
+	"""
+	The tier's price per month, in cents
+	@example "100"
+	price: Int
+}
