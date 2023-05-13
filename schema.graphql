@@ -9,6 +9,8 @@ type Mutation {
 	updateTier(id: Int!, input: TierInput!): Tier!
 
 	createBrand(input: BrandInput!): Brand!
+	deleteBrand(id: Int!): Brand!
+	updateBrand(id: Int!, input: BrandInput!): Brand!
 }
 
 type Tier {

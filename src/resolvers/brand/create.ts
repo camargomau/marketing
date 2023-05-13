@@ -1,5 +1,5 @@
 import { iContext } from "index";
-import { iBrand, iTier } from "types";
+import { iBrand } from "types";
 
 export const createBrand = async (
 	parent: any,
@@ -16,8 +16,6 @@ export const createBrand = async (
 	{ db }: iContext,
 	info: any
 ) => {
-	const assocTier = await db.sequelize.models.Tier.findByPk(args.input.tierId);
-
 	const created: iBrand = (await db.sequelize.models.Brand.create({
 		name: args.input.name,
 		email: args.input.email,

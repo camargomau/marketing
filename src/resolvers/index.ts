@@ -3,8 +3,10 @@ import { deleteTier } from "./tier/delete";
 import { readTier } from "./tier/read";
 import { updateTier } from "./tier/update";
 
-import { readBrand } from "./brand/read";
 import { createBrand } from "./brand/create";
+import { deleteBrand } from "./brand/delete";
+import { readBrand } from "./brand/read";
+import { updateBrand } from "./brand/update";
 
 export const resolvers = {
 	Query: {
@@ -18,5 +20,7 @@ export const resolvers = {
 		updateTier,
 
 		createBrand,
+		deleteBrand,
+		updateBrand
 	},
 };
