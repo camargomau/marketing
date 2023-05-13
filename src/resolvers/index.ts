@@ -13,6 +13,10 @@ import { deleteSocialNetwork } from "./socialNetwork/delete";
 import { readSocialNetwork } from "./socialNetwork/read";
 import { updateSocialNetwork } from "./socialNetwork/update";
 
+import { createBrandSocial } from "./brandSocial/create";
+import { deleteBrandSocial } from "./brandSocial/delete";
+import { updateBrandSocial } from "./brandSocial/update";
+
 export const resolvers = {
 	Query: {
 		readTier,
@@ -31,6 +35,10 @@ export const resolvers = {
 
 		createSocialNetwork,
 		deleteSocialNetwork,
-		updateSocialNetwork
+		updateSocialNetwork,
+
+		createBrandSocial,
+		deleteBrandSocial,
+		updateBrandSocial,
 	},
 };
