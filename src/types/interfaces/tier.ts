@@ -9,4 +9,5 @@ export interface iTier {
 	 * The tier's price per month, in cents
 	 * @example "100"
 	 */
+	price: number;
 }
