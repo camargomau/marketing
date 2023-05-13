@@ -1,6 +1,6 @@
 type Query {
-	readTier: [Tier]
-	readBrand: [Brand]
+	readTier(id: Int): [Tier]
+	readBrand(id: Int): [Brand]
 }
 
 type Mutation {
