@@ -77,3 +77,16 @@ input BrandInput {
 	tierId: Int
 	paymentDue: Boolean
 }
+
+type SocialNetwork {
+	id: ID
+	"""
+	The social network's name
+	@example "Reddit"
+	"""
+	name: String
+}
+
+input SocialNetworkInput {
+	name: String
+}
