@@ -95,3 +95,40 @@ type SocialNetwork {
 input SocialNetworkInput {
 	name: String
 }
+
+type BrandSocial {
+	id: ID
+	"""
+	The brand to which this account belongs (fk)
+	"""
+	fkBrand: Int
+	"""
+	The brand to which this account belongs (actual)
+	"""
+	brand: Brand
+	"""
+	The social network for this account (fk)
+	"""
+	fkSocialNetwork: Int
+	"""
+	The social network for this account (actual)
+	"""
+	socialNetwork: SocialNetwork
+	"""
+	The account's username
+	@example "microsoft"
+	"""
+	username: String
+	"""
+	The account's creation date
+	@example "2012-08-28"
+	"""
+	creationDate: String
+}
+
+input BrandSocialInput {
+	fkBrand: Int
+	fkSocialNetwork: Int
+	username: String
+	creationDate: String
+}
