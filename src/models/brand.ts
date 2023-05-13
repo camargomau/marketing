@@ -31,7 +31,7 @@ export default class Brand extends Model<iBrand> {
 	phone: string;
 
 	@ForeignKey(() => Tier)
-	@Column
+	@Column({ field: "fkTier" })
 	tierId: number;
 
 	@HasOne(() => Tier, { foreignKey: 'id', sourceKey: 'tierId' })
