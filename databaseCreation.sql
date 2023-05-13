@@ -35,10 +35,10 @@ CREATE TABLE IF NOT EXISTS `marketing`.`brand` (
   `passwordHash` VARCHAR(45) NOT NULL,
   `phone` VARCHAR(45) NOT NULL,
   `fkTier` INT NOT NULL,
-  `paymentDue` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`id`, `fkTier`),
-  INDEX `fk_cliente_nivel_paga_idx` (`fkTier` ASC) VISIBLE,
-  CONSTRAINT `fk_cliente_nivel_paga`
+  `paymentDue` TINYINT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fkTier_idx` (`fkTier` ASC) VISIBLE,
+  CONSTRAINT `fkTier`
     FOREIGN KEY (`fkTier`)
     REFERENCES `marketing`.`tier` (`id`)
     ON DELETE NO ACTION
@@ -65,15 +65,15 @@ CREATE TABLE IF NOT EXISTS `marketing`.`brandSocial` (
   `fkSocialNetwork` INT NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `creationDate` DATE NOT NULL,
-  PRIMARY KEY (`id`, `fkSocialNetwork`, `fkBrand`),
-  INDEX `fk_det_redes_cliente_cliente1_idx` (`fkBrand` ASC) VISIBLE,
-  INDEX `fk_det_redes_cliente_red_social1_idx` (`fkSocialNetwork` ASC) VISIBLE,
-  CONSTRAINT `fk_det_redes_cliente_cliente1`
+  PRIMARY KEY (`id`),
+  INDEX `fkBrand_idx` (`fkBrand` ASC) VISIBLE,
+  INDEX `fkSocialNetwork_idx` (`fkSocialNetwork` ASC) VISIBLE,
+  CONSTRAINT `fkBrand`
     FOREIGN KEY (`fkBrand`)
     REFERENCES `marketing`.`brand` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_det_redes_cliente_red_social1`
+  CONSTRAINT `fkSocialNetwork`
     FOREIGN KEY (`fkSocialNetwork`)
     REFERENCES `marketing`.`socialNetwork` (`id`)
     ON DELETE NO ACTION
@@ -98,9 +98,9 @@ CREATE TABLE IF NOT EXISTS `marketing`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `fkCountry` INT NOT NULL,
-  PRIMARY KEY (`id`, `fkCountry`),
-  INDEX `fk_usuario_país1_idx` (`fkCountry` ASC) VISIBLE,
-  CONSTRAINT `fk_usuario_país1`
+  PRIMARY KEY (`id`),
+  INDEX `fkCountry_idx` (`fkCountry` ASC) VISIBLE,
+  CONSTRAINT `fkCountry`
     FOREIGN KEY (`fkCountry`)
     REFERENCES `marketing`.`country` (`id`)
     ON DELETE NO ACTION
@@ -118,15 +118,15 @@ CREATE TABLE IF NOT EXISTS `marketing`.`userSocial` (
   `fkSocialNetwork` INT NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `creationDate` DATE NOT NULL,
-  PRIMARY KEY (`id`, `fkUser`, `fkSocialNetwork`),
-  INDEX `fk_redes_usuarios_usuario1_idx` (`fkUser` ASC) VISIBLE,
-  INDEX `fk_redes_usuarios_red_social1_idx` (`fkSocialNetwork` ASC) VISIBLE,
-  CONSTRAINT `fk_redes_usuarios_usuario1`
+  PRIMARY KEY (`id`),
+  INDEX `fkUser_idx` (`fkUser` ASC) VISIBLE,
+  INDEX `fkSocialNetwork_idx` (`fkSocialNetwork` ASC) VISIBLE,
+  CONSTRAINT `fkUser`
     FOREIGN KEY (`fkUser`)
     REFERENCES `marketing`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_redes_usuarios_red_social1`
+  CONSTRAINT `fkSocialNetwork_1`
     FOREIGN KEY (`fkSocialNetwork`)
     REFERENCES `marketing`.`socialNetwork` (`id`)
     ON DELETE NO ACTION
@@ -142,15 +142,15 @@ CREATE TABLE IF NOT EXISTS `marketing`.`userBrand` (
   `fkUser` INT NOT NULL,
   `fkBrand` INT NOT NULL,
   `sentiment` FLOAT NOT NULL,
-  PRIMARY KEY (`id`, `fkUser`, `fkBrand`),
-  INDEX `fk_det_marca_usuario_usuario1_idx` (`fkUser` ASC) VISIBLE,
-  INDEX `fk_det_marca_usuario_marca1_idx` (`fkBrand` ASC) VISIBLE,
-  CONSTRAINT `fk_det_marca_usuario_usuario1`
+  PRIMARY KEY (`id`),
+  INDEX `fkUser_idx` (`fkUser` ASC) VISIBLE,
+  INDEX `fkBrand_idx` (`fkBrand` ASC) VISIBLE,
+  CONSTRAINT `fkUser_1`
     FOREIGN KEY (`fkUser`)
     REFERENCES `marketing`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_det_marca_usuario_marca1`
+  CONSTRAINT `fkBrand_1`
     FOREIGN KEY (`fkBrand`)
     REFERENCES `marketing`.`brand` (`id`)
     ON DELETE NO ACTION
@@ -167,15 +167,15 @@ CREATE TABLE IF NOT EXISTS `marketing`.`userPost` (
   `fkSocialNetwork` INT NOT NULL,
   `dateTime` DATETIME NOT NULL,
   `sentiment` FLOAT NOT NULL,
-  PRIMARY KEY (`id`, `fkUserBrand`, `fkSocialNetwork`),
-  INDEX `fk_comentario_det_marca_usuario1_idx` (`fkUserBrand` ASC) VISIBLE,
-  INDEX `fk_comentario_red_social1_idx` (`fkSocialNetwork` ASC) VISIBLE,
-  CONSTRAINT `fk_comentario_det_marca_usuario1`
+  PRIMARY KEY (`id`),
+  INDEX `fkUserBrand_idx` (`fkUserBrand` ASC) VISIBLE,
+  INDEX `fkSocialNetwork_idx` (`fkSocialNetwork` ASC) VISIBLE,
+  CONSTRAINT `fkUserBrand`
     FOREIGN KEY (`fkUserBrand`)
     REFERENCES `marketing`.`userBrand` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comentario_red_social1`
+  CONSTRAINT `fkSocialNetwork_2`
     FOREIGN KEY (`fkSocialNetwork`)
     REFERENCES `marketing`.`socialNetwork` (`id`)
     ON DELETE NO ACTION
@@ -191,9 +191,9 @@ CREATE TABLE IF NOT EXISTS `marketing`.`brandPost` (
   `fkBrandSocial` INT NOT NULL,
   `dateTime` DATETIME NOT NULL,
   `publicReaction` FLOAT NOT NULL,
-  PRIMARY KEY (`id`, `fkBrandSocial`),
-  INDEX `fk_publicación_det_redes_marca1_idx` (`fkBrandSocial` ASC) VISIBLE,
-  CONSTRAINT `fk_publicación_det_redes_marca1`
+  PRIMARY KEY (`id`),
+  INDEX `fkBrandSocial_idx` (`fkBrandSocial` ASC) VISIBLE,
+  CONSTRAINT `fkBrandSocial`
     FOREIGN KEY (`fkBrandSocial`)
     REFERENCES `marketing`.`brandSocial` (`id`)
     ON DELETE NO ACTION
@@ -232,15 +232,15 @@ CREATE TABLE IF NOT EXISTS `marketing`.`lexical` (
   `fkBrandSocial` INT NOT NULL,
   `fkWordTrend` INT NOT NULL,
   `frequency` INT NOT NULL,
-  PRIMARY KEY (`id`, `fkBrandSocial`, `fkWordTrend`),
-  INDEX `fk_palabras_redes_marca1_idx` (`fkBrandSocial` ASC) VISIBLE,
-  INDEX `fk_léxico_marca_red_palabra_tendencia1_idx` (`fkWordTrend` ASC) VISIBLE,
-  CONSTRAINT `fk_palabras_redes_marca1`
+  PRIMARY KEY (`id`),
+  INDEX `fkBrandSocial_idx` (`fkBrandSocial` ASC) VISIBLE,
+  INDEX `fkWordTrend_idx` (`fkWordTrend` ASC) VISIBLE,
+  CONSTRAINT `fkBrandSocial_1`
     FOREIGN KEY (`fkBrandSocial`)
     REFERENCES `marketing`.`brandSocial` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_léxico_marca_red_palabra_tendencia1`
+  CONSTRAINT `fkWordTrend`
     FOREIGN KEY (`fkWordTrend`)
     REFERENCES `marketing`.`wordTrend` (`id`)
     ON DELETE NO ACTION
@@ -257,15 +257,15 @@ CREATE TABLE IF NOT EXISTS `marketing`.`userComment` (
   `fkUser` INT NOT NULL,
   `dateTime` DATETIME NOT NULL,
   `sentiment` FLOAT NOT NULL,
-  PRIMARY KEY (`id`, `fkUser`, `fkBrandPost`),
-  INDEX `fk_comentario_publicación1_idx` (`fkBrandPost` ASC) VISIBLE,
-  INDEX `fk_comentario_usuario1_idx` (`fkUser` ASC) VISIBLE,
-  CONSTRAINT `fk_comentario_publicación1`
+  PRIMARY KEY (`id`),
+  INDEX `fkBrandPost_idx` (`fkBrandPost` ASC) VISIBLE,
+  INDEX `fkUser_idx` (`fkUser` ASC) VISIBLE,
+  CONSTRAINT `fkBrandPost`
     FOREIGN KEY (`fkBrandPost`)
     REFERENCES `marketing`.`brandPost` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comentario_usuario1`
+  CONSTRAINT `fkUser_2`
     FOREIGN KEY (`fkUser`)
     REFERENCES `marketing`.`user` (`id`)
     ON DELETE NO ACTION
@@ -282,8 +282,8 @@ CREATE TABLE IF NOT EXISTS `marketing`.`brandComment` (
   `dateTime` DATETIME NOT NULL,
   `publicReaction` FLOAT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_respuesta_marca_publicación_tercero1_idx` (`fkUserPost` ASC) VISIBLE,
-  CONSTRAINT `fk_respuesta_marca_publicación_tercero1`
+  INDEX `fkUserPost_idx` (`fkUserPost` ASC) VISIBLE,
+  CONSTRAINT `fkUserPost`
     FOREIGN KEY (`fkUserPost`)
     REFERENCES `marketing`.`userPost` (`id`)
     ON DELETE NO ACTION
@@ -302,32 +302,32 @@ CREATE TABLE IF NOT EXISTS `marketing`.`interaction` (
   `fkBrandComment` INT NOT NULL,
   `fkUserPost` INT NOT NULL,
   `fkUserComment` INT NOT NULL,
-  PRIMARY KEY (`id`, `fkInteractionType`),
-  INDEX `fk_interacciones_respuesta_interacciones1_idx` (`fkInteractionType` ASC) VISIBLE,
-  INDEX `fk_interacciones_respuesta_publicación_tercero1_idx` (`fkUserPost` ASC) VISIBLE,
-  INDEX `fk_interacciones_respuesta_comentario1_idx` (`fkUserComment` ASC) VISIBLE,
-  INDEX `fk_interacciones_respuesta_publicación1_idx` (`fkBrandPost` ASC) VISIBLE,
-  CONSTRAINT `fk_interacciones_respuesta_respuesta_marca1`
+  PRIMARY KEY (`id`),
+  INDEX `fkInteractionType_idx` (`fkInteractionType` ASC) VISIBLE,
+  INDEX `fkUserPost_idx` (`fkUserPost` ASC) VISIBLE,
+  INDEX `fkUserComment_idx` (`fkUserComment` ASC) VISIBLE,
+  INDEX `fkBrandPost_1` (`fkBrandPost` ASC) VISIBLE,
+  CONSTRAINT `fkBrandComment`
     FOREIGN KEY (`fkBrandComment`)
     REFERENCES `marketing`.`brandComment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_interacciones_respuesta_interacciones1`
+  CONSTRAINT `fkInteractionType`
     FOREIGN KEY (`fkInteractionType`)
     REFERENCES `marketing`.`interactionType` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_interacciones_respuesta_publicación_tercero1`
+  CONSTRAINT `fkUserPost_1`
     FOREIGN KEY (`fkUserPost`)
     REFERENCES `marketing`.`userPost` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_interacciones_respuesta_comentario1`
+  CONSTRAINT `fkUserComment`
     FOREIGN KEY (`fkUserComment`)
     REFERENCES `marketing`.`userComment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_interacciones_respuesta_publicación1`
+  CONSTRAINT `fkBrandPost_1`
     FOREIGN KEY (`fkBrandPost`)
     REFERENCES `marketing`.`brandPost` (`id`)
     ON DELETE NO ACTION
