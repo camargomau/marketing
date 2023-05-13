@@ -14,31 +14,18 @@ export const readBrand = async (
 		(tier) => tier.name === "tier"
 	);
 
-	var read;
-	if (!args.id) {
-		read = (await db.sequelize.models.Brand.findAll({
-			attributes: fields.attributes,
-			include: [
-				{
-					attributes: tierFields ? tierFields.attributes : [],
-					model: db.sequelize.models.Tier,
-					as: "tier",
-				},
-			]
-		})) as any[];
-	} else {
-		read = (await db.sequelize.models.Brand.findAll({
-			where: { id: args.id },
-			attributes: fields.attributes,
-			include: [
-				{
-					attributes: tierFields ? tierFields.attributes : [],
-					model: db.sequelize.models.Tier,
-					as: "tier",
-				},
-			]
-		})) as any[];
-	}
+	const searchedId = (!args.id) ? undefined : { id: args.id }
+	const read = (await db.sequelize.models.Brand.findAll({
+		where: searchedId,
+		attributes: fields.attributes,
+		include: [
+			{
+				attributes: tierFields ? tierFields.attributes : [],
+				model: db.sequelize.models.Tier,
+				as: "tier",
+			},
+		]
+	})) as any[];
 
 	return read;
 };
