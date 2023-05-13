@@ -1,6 +1,7 @@
 type Query {
 	readTier(id: Int): [Tier]
 	readBrand(id: Int): [Brand]
+	readSocialNetwork(id: Int): [SocialNetwork]
 }
 
 type Mutation {
@@ -11,6 +12,10 @@ type Mutation {
 	createBrand(input: BrandInput!): Brand!
 	deleteBrand(id: Int!): Brand!
 	updateBrand(id: Int!, input: BrandInput!): Brand!
+
+	createSocialNetwork(input: SocialNetworkInput!): SocialNetwork!
+	deleteSocialNetwork(id: Int!): SocialNetwork!
+	updateSocialNetwork(id: Int!, input: SocialNetworkInput!): SocialNetwork!
 }
 
 type Tier {

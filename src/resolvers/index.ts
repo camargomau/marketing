@@ -8,10 +8,16 @@ import { deleteBrand } from "./brand/delete";
 import { readBrand } from "./brand/read";
 import { updateBrand } from "./brand/update";
 
+import { createSocialNetwork } from "./socialNetwork/create";
+import { deleteSocialNetwork } from "./socialNetwork/delete";
+import { readSocialNetwork } from "./socialNetwork/read";
+import { updateSocialNetwork } from "./socialNetwork/update";
+
 export const resolvers = {
 	Query: {
 		readTier,
 		readBrand,
+		readSocialNetwork
 	},
 
 	Mutation: {
@@ -21,6 +27,10 @@ export const resolvers = {
 
 		createBrand,
 		deleteBrand,
-		updateBrand
+		updateBrand,
+
+		createSocialNetwork,
+		deleteSocialNetwork,
+		updateSocialNetwork
 	},
 };
