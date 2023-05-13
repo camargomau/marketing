@@ -28,11 +28,11 @@ export default class BrandSocial extends Model<iBrandSocial> {
 	brand: Brand;
 
 	@Column({ type: DataType.STRING, allowNull: false })
-	@ForeignKey(() => Brand)
+	@ForeignKey(() => SocialNetwork)
 	@Column({ field: "fkSocialNetwork" })
 	fkSocialNetwork: number;
 
-	@HasOne(() => Brand, { foreignKey: "id", sourceKey: "fkSocialNetwork" })
+	@HasOne(() => SocialNetwork, { foreignKey: "id", sourceKey: "fkSocialNetwork" })
 	socialNetwork: SocialNetwork;
 
 	@Column({ type: DataType.STRING, allowNull: false })

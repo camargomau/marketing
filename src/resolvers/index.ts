@@ -15,13 +15,15 @@ import { updateSocialNetwork } from "./socialNetwork/update";
 
 import { createBrandSocial } from "./brandSocial/create";
 import { deleteBrandSocial } from "./brandSocial/delete";
+import { readBrandSocial } from "./brandSocial/read";
 import { updateBrandSocial } from "./brandSocial/update";
 
 export const resolvers = {
 	Query: {
 		readTier,
 		readBrand,
-		readSocialNetwork
+		readSocialNetwork,
+		readBrandSocial
 	},
 
 	Mutation: {
@@ -39,6 +41,6 @@ export const resolvers = {
 
 		createBrandSocial,
 		deleteBrandSocial,
-		updateBrandSocial,
+		updateBrandSocial
 	},
 };

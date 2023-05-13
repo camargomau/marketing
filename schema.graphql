@@ -2,6 +2,7 @@ type Query {
 	readTier(id: Int): [Tier]
 	readBrand(id: Int): [Brand]
 	readSocialNetwork(id: Int): [SocialNetwork]
+	readBrandSocial(id: Int): [BrandSocial]
 }
 
 type Mutation {

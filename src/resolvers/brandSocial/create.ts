@@ -18,7 +18,7 @@ export const createBrandSocial = async (
 		fkBrand: args.input.fkBrand,
 		fkSocialNetwork: args.input.fkSocialNetwork,
 		username: args.input.username,
-		creationdate: args.input.creationDate
+		creationDate: args.input.creationDate
 	})) as any;
 
 	return created;
