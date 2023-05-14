@@ -16,7 +16,7 @@ export const readSocialNetwork = async (
 		} else {
 			read = await db.sequelize.models.SocialNetwork.findAll( {
 				where: { id: args.id },
-				attributes: args.nest.attributes
+				attributes: args.nest
 			}
 			)
 		}
