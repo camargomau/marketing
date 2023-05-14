@@ -25,23 +25,31 @@ export const readBrandSocial = async (
 	console.log(brandFields);
 	console.log("socialNetworkFields obj:");
 	console.log(socialNetworkFields);
+	fields.attributes.push('fkSocialNetwork')
 	
 	var entries = (await db.sequelize.models.BrandSocial.findAll({
     	attributes: fields.attributes
 	})) as any[];
 
 	if (socialNetworkFields) {
-		entries = entries.map(async (entry) => {
-			let entryA = await readSocialNetwork(this, { id: entry.id, nest: socialNetworkFields }, { db }, info);
+		entries = await Promise.all(entries.map(async (entry) => {
+			let entryA = await readSocialNetwork(this, { id: entry.fkSocialNetwork, nest: socialNetworkFields }, { db }, info);
 			entry.dataValues.socialNetwork = entryA[0]
+			entry._options.attributes.push('socialNetwork')
 
 			console.log("entry.socialNetwork contains:");
 			console.log(entry.dataValues.socialNetwork);
-		})
+
+			return entry
+		}))
 	}
 
 	console.log("entries array:")
 	console.log(entries);
+	console.log("first entry.dataValues.socialNetwork:")
+	console.log(entries[0].dataValues.socialNetwork);
+	console.log("first entry._options.attributes:")
+	console.log(entries[0]._options.attributes);
 	return entries;
 
 	/**
