@@ -9,9 +9,6 @@ export const readBrandSocial = async (
 	{ db }: iContext,
 	info: any
 ): Promise<iBrandSocial[]> => {
-	console.log("info arg:");
-	console.log(info);
-
 	const fields = getFields(info, "readBrandSocial");
 
 	console.log("fields obj:");
@@ -29,18 +26,22 @@ export const readBrandSocial = async (
 	console.log("socialNetworkFields obj:");
 	console.log(socialNetworkFields);
 	
-	const entries = (await db.sequelize.models.BrandSocial.findAll({
+	var entries = (await db.sequelize.models.BrandSocial.findAll({
     	attributes: fields.attributes
 	})) as any[];
 
 	if (socialNetworkFields) {
-		entries.map(async (entry) => {
-			entry.socialNetwork = await readSocialNetwork(this, { id: entry.id }, { db }, info);
+		entries = entries.map(async (entry) => {
+			let entryA = await readSocialNetwork(this, { id: entry.id, nest: socialNetworkFields }, { db }, info);
+			entry.dataValues.socialNetwork = entryA[0]
+
 			console.log("entry.socialNetwork contains:");
-			console.log(entry.socialNetwork);
+			console.log(entry.dataValues.socialNetwork);
 		})
 	}
 
+	console.log("entries array:")
+	console.log(entries);
 	return entries;
 
 	/**
