@@ -1,16 +1,18 @@
 import { iContext } from "index";
+import { iFieldSelection } from "../../utils/getFields";
 import { getFields } from "../../utils/getFields";
+
 import { iBrandSocial } from "types";
 import { readSocialNetwork } from "../socialNetwork/read"
 
 export const readBrandSocial = async (
 	parent: any,
-	args: { id: number },
+	args: { id: number, nest: any },
 	{ db }: iContext,
 	info: any
 ): Promise<iBrandSocial[]> => {
 	// Obtain the basic fields that are to be queried
-	const fields = getFields(info, "readBrandSocial");
+	const fields: iFieldSelection = (args.nest) ? args.nest : getFields(info, "readBrandSocial");
 
 	// Obtaini the fields from the related tables
 	const brandFields = fields.include.find(
@@ -35,7 +37,7 @@ export const readBrandSocial = async (
 		found = await Promise.all(
 			found.map(async (entry) => {
 				let related = await readSocialNetwork(
-					this, { id: entry.fkSocialNetwork, nest: socialNetworkFields.attributes }, { db }, info
+					this, { id: entry.fkSocialNetwork, nest: socialNetworkFields }, { db }, info
 				);
 				// read functions return an array
 				entry.socialNetwork = related[0]

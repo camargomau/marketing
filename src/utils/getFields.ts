@@ -1,6 +1,6 @@
 import { GraphQLResolveInfo } from "graphql";
 
-interface iFieldSelection {
+export interface iFieldSelection {
 	attributes: string[];
 	include: iFieldSelection[];
 	name: string;

@@ -8,11 +8,11 @@ export const readSocialNetwork = async (
 	info: any
 ) => {
 	const searchedId = (args.id) ? { id: args.id } : undefined
-	const desiredAttributes = (args.nest) ? args.nest : getFields(info, "readSocialNetwork")
+	const fields = (args.nest) ? args.nest : getFields(info, "readSocialNetwork")
 
 	const found = await db.sequelize.models.SocialNetwork.findAll({
 		where: searchedId,
-		attributes: desiredAttributes
+		attributes: fields.attributes
 	})
 
 	return found
