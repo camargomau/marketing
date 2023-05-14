@@ -1,4 +1,5 @@
 import { iContext } from "index";
+import { getFields } from "../../utils/getFields";
 
 export const readSocialNetwork = async (
 	parent: any,
@@ -6,21 +7,13 @@ export const readSocialNetwork = async (
 	{ db }: iContext,
 	info: any
 ) => {
-	var read;
+	const searchedId = (args.id) ? { id: args.id } : undefined
+	const desiredAttributes = (args.nest) ? args.nest : getFields(info, "readSocialNetwork")
 
-	if (!args.nest) {
-		read = !args.id ? await db.sequelize.models.SocialNetwork.findAll() : [await db.sequelize.models.SocialNetwork.findByPk(args.id)]
-	} else {
-		if (!args.id) {
-			read = await db.sequelize.models.SocialNetwork.findAll();
-		} else {
-			read = await db.sequelize.models.SocialNetwork.findAll( {
-				where: { id: args.id },
-				attributes: args.nest
-			}
-			)
-		}
-	}
+	const found = await db.sequelize.models.SocialNetwork.findAll({
+		where: searchedId,
+		attributes: desiredAttributes
+	})
 
-	return read
+	return found
 };
