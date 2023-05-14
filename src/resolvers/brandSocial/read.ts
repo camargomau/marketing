@@ -34,8 +34,7 @@ export const readBrandSocial = async (
 	if (socialNetworkFields) {
 		entries = await Promise.all(entries.map(async (entry) => {
 			let entryA = await readSocialNetwork(this, { id: entry.fkSocialNetwork, nest: socialNetworkFields }, { db }, info);
-			entry.dataValues.socialNetwork = entryA[0]
-			entry._options.attributes.push('socialNetwork')
+			entry.socialNetwork = entryA[0]
 
 			console.log("entry.socialNetwork contains:");
 			console.log(entry.dataValues.socialNetwork);
