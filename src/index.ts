@@ -31,7 +31,7 @@ const main = async () => {
 	const { url } = await startStandaloneServer(server, {
 		listen: { port: 4000 },
 		// Enviamos la instancia de la base de datos a los resolvers
-		context: async ({ req, res }) => ({ db })
+		context: async () => ({ db })
 	})
 
 	logger.info(`🚀  Server ready at: ${url}`)

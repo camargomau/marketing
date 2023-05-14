@@ -26,7 +26,7 @@ export const readBrandSocial = async (
 
 	// (obtains just the basic fields)
 	const searchedId = args.id ? { id: args.id } : undefined
-	var found = (await db.sequelize.models.BrandSocial.findAll({
+	let found = (await db.sequelize.models.BrandSocial.findAll({
 		where: searchedId,
 		attributes: fields.attributes
 	})) as any[]
@@ -35,7 +35,7 @@ export const readBrandSocial = async (
 	if (socialNetworkFields) {
 		found = await Promise.all(
 			found.map(async (entry) => {
-				let related = await readSocialNetwork(
+				const related = await readSocialNetwork(
 					this,
 					{ id: entry.fkSocialNetwork, nest: socialNetworkFields },
 					{ db },
@@ -51,7 +51,7 @@ export const readBrandSocial = async (
 	if (brandFields) {
 		found = await Promise.all(
 			found.map(async (entry) => {
-				let related = await readBrand(
+				const related = await readBrand(
 					this,
 					{ id: entry.fkBrand, nest: brandFields },
 					{ db },

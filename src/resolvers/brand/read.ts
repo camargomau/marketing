@@ -17,7 +17,7 @@ export const readBrand = async (
 	if (tierFields) fields.attributes.push("fkTier")
 
 	const searchedId = args.id ? { id: args.id } : undefined
-	var found = (await db.sequelize.models.Brand.findAll({
+	let found = (await db.sequelize.models.Brand.findAll({
 		where: searchedId,
 		attributes: fields.attributes
 	})) as any[]
@@ -25,7 +25,7 @@ export const readBrand = async (
 	if (tierFields) {
 		found = await Promise.all(
 			found.map(async (entry) => {
-				let related = await readTier(
+				const related = await readTier(
 					this,
 					{ id: entry.fkTier, nest: tierFields },
 					{ db },

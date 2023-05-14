@@ -13,7 +13,7 @@ export const getFields = (
 	const fieldNode = info.fieldNodes.find(
 		(fieldNode: any) => fieldNode.name.value === mainFieldName
 	)
-	let fields: iFieldSelection = {
+	const fields: iFieldSelection = {
 		attributes: [],
 		include: [],
 		name: mainFieldName
