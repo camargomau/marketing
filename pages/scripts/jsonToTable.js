@@ -1,37 +1,29 @@
 const jsonToTable = (rawJson) => {
-	const tableJson = rawJson.data[Object.keys(rawJson.data)[0]]
+  const tableJson = Object.values(rawJson.data)[0];
 
-	createTable = (tableJson) => {
-		let tableHtml = "<table><tr>"
+  const createTable = (tableJson) => {
+    let tableHtml = "<table><tr>";
 
-		// Add row of headers
-		for (header in tableJson[0]) {
-			tableHtml += "<th>" + header + "</th>"
-		}
-		tableHtml += "</tr>"
+    // Add row of headers
+    for (const header of Object.keys(tableJson[0])) {
+      tableHtml += `<th>${header}</th>`;
+    }
+    tableHtml += "</tr>";
 
-		for (index in tableJson) {
-			let entry = tableJson[index]
+    for (const entry of tableJson) {
+      // For each entry in the array, create a row
+      tableHtml += "<tr>";
+      for (const column of Object.values(entry)) {
+		// If the value is an object (isArray), then nest a table
+        const value = Array.isArray(column) ? createTable(column) : column;
+        tableHtml += `<td>${value}</td>`;
+      }
+      tableHtml += "</tr>";
+    }
 
-			// For each entry in the array, create a row
-			tableHtml += "<tr>"
-			for (column in entry) {
-				value = entry[column]
+    tableHtml += "</table>";
+    return tableHtml;
+  };
 
-				// If the value in each row is not an object, just put it
-				if (typeof value != "object") {
-					tableHtml += "<td>" + entry[column] + "</td>"
-					// If it is an object, recursively put a table inside
-				} else {
-					tableHtml += "<td>" + createTable([value], "") + "</td>"
-				}
-			}
-			tableHtml += "</tr>"
-		}
-
-		tableHtml += "</table>"
-		return tableHtml
-	}
-
-	return createTable(tableJson)
-}
+  return createTable(tableJson);
+};
