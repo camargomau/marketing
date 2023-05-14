@@ -7,14 +7,14 @@ import { readSocialNetwork } from "../socialNetwork/read"
 
 export const readBrandSocial = async (
 	parent: any,
-	args: { id: number, nest: any },
+	args: { id: number, nest: iFieldSelection },
 	{ db }: iContext,
 	info: any
 ): Promise<iBrandSocial[]> => {
 	// Obtain the basic fields that are to be queried
-	const fields: iFieldSelection = (args.nest) ? args.nest : getFields(info, "readBrandSocial");
+	const fields = (args.nest) ? args.nest : getFields(info, "readBrandSocial");
 
-	// Obtaini the fields from the related tables
+	// Obtain the fields from the related tables
 	const brandFields = fields.include.find(
 		(brand) => brand.name === "brand"
 	);
