@@ -4,6 +4,7 @@ import { getFields } from "../../utils/getFields";
 
 import { iBrandSocial } from "types";
 import { readSocialNetwork } from "../socialNetwork/read"
+import { readBrand } from "../brand/read";
 
 export const readBrandSocial = async (
 	parent: any,
@@ -22,8 +23,8 @@ export const readBrandSocial = async (
 		(social) => social.name === "socialNetwork"
 	);
 	// Query the fk so that we can match later
-	if (brandFields) fields.attributes.push('fkBrand')
-	if (socialNetworkFields) fields.attributes.push('fkSocialNetwork')
+	if (brandFields) fields.attributes.push('fkBrand');
+	if (socialNetworkFields) fields.attributes.push('fkSocialNetwork');
 	
 	// (obtains just the basic fields)
 	const searchedId = (args.id) ? { id: args.id } : undefined
@@ -41,6 +42,18 @@ export const readBrandSocial = async (
 				);
 				// read functions return an array
 				entry.socialNetwork = related[0]
+
+				return entry
+			}
+		))
+	}
+	if (brandFields) {
+		found = await Promise.all(
+			found.map(async (entry) => {
+				let related = await readBrand(
+					this, { id: entry.fkBrand, nest: brandFields }, { db }, info
+				);
+				entry.brand = related[0]
 
 				return entry
 			}
