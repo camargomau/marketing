@@ -1,21 +1,21 @@
-import { iContext } from "index";
+import { iContext } from "index"
 
 export const updateSocialNetwork = async (
 	parent: any,
 	args: {
-		id: number;
+		id: number
 		input: {
-			name?: string;
-		};
+			name?: string
+		}
 	},
 	{ db }: iContext,
 	info: any
 ) => {
-	const toUpdate = await db.sequelize.models.SocialNetwork.findByPk(args.id);
+	const toUpdate = await db.sequelize.models.SocialNetwork.findByPk(args.id)
 
 	if (!toUpdate) {
-		throw new Error(`No entry with the id ${args.id} could be found`);
+		throw new Error(`No entry with the id ${args.id} could be found`)
 	} else {
-		return await toUpdate.update(args.input);
+		return await toUpdate.update(args.input)
 	}
-};
+}

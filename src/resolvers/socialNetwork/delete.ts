@@ -1,4 +1,4 @@
-import { iContext } from "index";
+import { iContext } from "index"
 
 export const deleteSocialNetwork = async (
 	parent: any,
@@ -6,11 +6,11 @@ export const deleteSocialNetwork = async (
 	{ db }: iContext,
 	info: any
 ) => {
-	const toDelete = await db.sequelize.models.SocialNetwork.findByPk(args.id);
+	const toDelete = await db.sequelize.models.SocialNetwork.findByPk(args.id)
 
 	if (!toDelete) {
-		throw new Error(`No entry with the id ${args.id} could be found`);
+		throw new Error(`No entry with the id ${args.id} could be found`)
 	} else {
-		return toDelete.destroy();
+		return toDelete.destroy()
 	}
-};
+}

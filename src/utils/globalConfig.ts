@@ -1,17 +1,17 @@
-import path from "path";
-import fs from "fs";
+import path from "path"
+import fs from "fs"
 
 interface IConfig {
 	db: {
-		host: string;
-		port: number;
-		user: string;
-		password: string;
-		database: string;
-	};
+		host: string
+		port: number
+		user: string
+		password: string
+		database: string
+	}
 	logger: {
-		level: string;
-	};
+		level: string
+	}
 }
 
 export default (): IConfig => {
@@ -19,7 +19,7 @@ export default (): IConfig => {
 	const config = fs.readFileSync(
 		path.join(__dirname, "../../localSettings.json"),
 		"utf8"
-	);
+	)
 	// Entonces lo convertimos en un json propiamente y lo retornamos
-	return JSON.parse(config);
-};
+	return JSON.parse(config)
+}

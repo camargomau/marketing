@@ -16,27 +16,27 @@ export default class Brand extends Model<iBrand> {
 	@AutoIncrement
 	@PrimaryKey
 	@Column({ type: DataType.NUMBER, allowNull: false })
-	id: number;
+	id: number
 
 	@Column({ type: DataType.STRING, allowNull: false })
-	name: string;
+	name: string
 
 	@Column({ type: DataType.STRING, allowNull: false })
-	email: string;
+	email: string
 
 	@Column({ type: DataType.STRING, allowNull: false })
-	passwordHash: string;
+	passwordHash: string
 
 	@Column({ type: DataType.STRING, allowNull: false })
-	phone: string;
+	phone: string
 
 	@ForeignKey(() => Tier)
 	@Column({ field: "fkTier" })
-	fkTier: number;
+	fkTier: number
 
 	@HasOne(() => Tier, { foreignKey: "id", sourceKey: "fkTier" })
 	tier: Tier
 
 	@Column({ type: DataType.BOOLEAN, allowNull: false })
-	paymentDue: boolean;
+	paymentDue: boolean
 }

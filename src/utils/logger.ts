@@ -1,37 +1,37 @@
-import { CategoryProvider, Category } from "typescript-logging-category-style";
-import { LogLevel } from "typescript-logging";
-import localConfigs from "./globalConfig";
+import { CategoryProvider, Category } from "typescript-logging-category-style"
+import { LogLevel } from "typescript-logging"
+import localConfigs from "./globalConfig"
 
 const getLoggingLevel = (): LogLevel => {
-	const cfg = localConfigs();
-	const level = cfg.logger.level.toLowerCase();
+	const cfg = localConfigs()
+	const level = cfg.logger.level.toLowerCase()
 	switch (level) {
 		case "trace":
-			return LogLevel.Trace;
+			return LogLevel.Trace
 		case "debug":
-			return LogLevel.Debug;
+			return LogLevel.Debug
 		case "info":
-			return LogLevel.Info;
+			return LogLevel.Info
 		case "warn":
-			return LogLevel.Warn;
+			return LogLevel.Warn
 		case "error":
-			return LogLevel.Error;
+			return LogLevel.Error
 		case "fatal":
-			return LogLevel.Fatal;
+			return LogLevel.Fatal
 		case "off":
-			return LogLevel.Off;
+			return LogLevel.Off
 		default:
 			provider
 				.getCategory("mainLogger")
-				.warn("Invalid logging level, defaulting to info");
-			return LogLevel.Info;
+				.warn("Invalid logging level, defaulting to info")
+			return LogLevel.Info
 	}
-};
+}
 
 const provider = CategoryProvider.createProvider("mainLogger", {
-	level: getLoggingLevel(),
-});
+	level: getLoggingLevel()
+})
 
 export function getLogger(name?: string): Category {
-	return provider.getCategory(name ?? "mainLogger");
+	return provider.getCategory(name ?? "mainLogger")
 }

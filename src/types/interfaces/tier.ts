@@ -1,13 +1,13 @@
 export interface iTier {
-	id: number;
+	id: number
 	/**
 	 * The tier's name
 	 * @example "Basic"
 	 */
-	name: string;
+	name: string
 	/**
 	 * The tier's price per month, in cents
 	 * @example "100"
 	 */
-	price: number;
+	price: number
 }

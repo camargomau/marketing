@@ -1,8 +1,8 @@
 export interface iSocialNetwork {
-	id: number;
+	id: number
 	/**
 	 * The social network's name
 	 * @example "Reddit"
 	 */
-	name: string;
+	name: string
 }

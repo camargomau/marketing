@@ -1,6 +1,6 @@
-import { iBrand } from "./interfaces/brand";
-import { iTier } from "./interfaces/tier";
-import { iSocialNetwork } from "./interfaces/socialNetwork";
-import { iBrandSocial } from "./interfaces/brandSocial";
+import { iBrand } from "./interfaces/brand"
+import { iTier } from "./interfaces/tier"
+import { iSocialNetwork } from "./interfaces/socialNetwork"
+import { iBrandSocial } from "./interfaces/brandSocial"
 
-export { iBrand, iTier, iSocialNetwork, iBrandSocial };
+export { iBrand, iTier, iSocialNetwork, iBrandSocial }

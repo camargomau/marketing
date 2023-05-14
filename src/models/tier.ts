@@ -4,20 +4,20 @@ import {
 	PrimaryKey,
 	Model,
 	Table,
-	DataType,
-} from "sequelize-typescript";
-import { iTier } from "types";
+	DataType
+} from "sequelize-typescript"
+import { iTier } from "types"
 
 @Table({ tableName: "tier", timestamps: false })
 export default class Tier extends Model<iTier> {
 	@AutoIncrement
 	@PrimaryKey
 	@Column({ type: DataType.NUMBER, allowNull: false })
-	id: number;
+	id: number
 
 	@Column({ type: DataType.STRING, allowNull: false })
-	name: string;
+	name: string
 
 	@Column({ type: DataType.NUMBER, allowNull: false })
-	price: number;
+	price: number
 }

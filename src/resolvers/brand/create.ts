@@ -1,17 +1,17 @@
-import { iContext } from "index";
-import { iBrand } from "types";
+import { iContext } from "index"
+import { iBrand } from "types"
 
 export const createBrand = async (
 	parent: any,
 	args: {
 		input: {
-			name: string;
-			email: string;
-			passwordHash: string;
-			phone: string;
-			fkTier: number;
-			paymentDue: boolean;
-		};
+			name: string
+			email: string
+			passwordHash: string
+			phone: string
+			fkTier: number
+			paymentDue: boolean
+		}
 	},
 	{ db }: iContext,
 	info: any
@@ -23,7 +23,7 @@ export const createBrand = async (
 		phone: args.input.phone,
 		fkTier: args.input.fkTier,
 		paymentDue: args.input.paymentDue
-	})) as any;
+	})) as any
 
-	return created;
-};
+	return created
+}

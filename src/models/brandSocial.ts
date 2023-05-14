@@ -9,35 +9,38 @@ import {
 	HasOne
 } from "sequelize-typescript"
 import { iBrandSocial } from "types"
-import Brand from "./brand";
-import SocialNetwork from "./socialNetwork";
+import Brand from "./brand"
+import SocialNetwork from "./socialNetwork"
 
 @Table({ tableName: "brandSocial", timestamps: false })
 export default class BrandSocial extends Model<iBrandSocial> {
 	@AutoIncrement
 	@PrimaryKey
 	@Column({ type: DataType.NUMBER, allowNull: false })
-	id: number;
+	id: number
 
 	@Column({ type: DataType.STRING, allowNull: false })
 	@ForeignKey(() => Brand)
 	@Column({ field: "fkBrand" })
-	fkBrand: number;
+	fkBrand: number
 
 	@HasOne(() => Brand, { foreignKey: "id", sourceKey: "fkBrand" })
-	brand: Brand;
+	brand: Brand
 
 	@Column({ type: DataType.STRING, allowNull: false })
 	@ForeignKey(() => SocialNetwork)
 	@Column({ field: "fkSocialNetwork" })
-	fkSocialNetwork: number;
+	fkSocialNetwork: number
 
-	@HasOne(() => SocialNetwork, { foreignKey: "id", sourceKey: "fkSocialNetwork" })
-	socialNetwork: SocialNetwork;
+	@HasOne(() => SocialNetwork, {
+		foreignKey: "id",
+		sourceKey: "fkSocialNetwork"
+	})
+	socialNetwork: SocialNetwork
 
 	@Column({ type: DataType.STRING, allowNull: false })
-	username: string;
+	username: string
 
 	@Column({ type: DataType.STRING, allowNull: false })
-	creationDate: string;
+	creationDate: string
 }

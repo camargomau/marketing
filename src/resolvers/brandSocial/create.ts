@@ -1,15 +1,15 @@
-import { iContext } from "index";
-import { iBrandSocial } from "types";
+import { iContext } from "index"
+import { iBrandSocial } from "types"
 
 export const createBrandSocial = async (
 	parent: any,
 	args: {
 		input: {
-			fkBrand: number;
-			fkSocialNetwork: number;
-			username: string;
-			creationDate: string;
-		};
+			fkBrand: number
+			fkSocialNetwork: number
+			username: string
+			creationDate: string
+		}
 	},
 	{ db }: iContext,
 	info: any
@@ -19,7 +19,7 @@ export const createBrandSocial = async (
 		fkSocialNetwork: args.input.fkSocialNetwork,
 		username: args.input.username,
 		creationDate: args.input.creationDate
-	})) as any;
+	})) as any
 
-	return created;
-};
+	return created
+}
