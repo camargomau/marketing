@@ -1,41 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script type="text/javascript" src="scripts/checkboxTable.js"></script>
-    <script type="text/javascript" src="scripts/jsonToTable.js"></script>
-  </head>
-  <body>
-    <h1>Query (read)</h1>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="styles.css" />
+		<script type="text/javascript" src="scripts/checkboxTable.js"></script>
+		<script type="text/javascript" src="scripts/jsonToTable.js"></script>
+	</head>
+	<body>
+		<h1>Query (read)</h1>
 
-    <div class="container">
-      <form id="tierForm" data-table="tier">
-        <h2>Tiers</h2>
-        <label><input type="checkbox" name="id" value="id" /> ID</label>
-        <label><input type="checkbox" name="name" value="name" /> Name</label>
-        <label><input type="checkbox" name="price" value="price" /> Price</label>
-        <button type="submit">Submit</button>
-      </form>
+		<div class="container">
+			<form id="tierForm" data-table="tier">
+				<h2>Tiers</h2>
+				<label><input type="checkbox" name="id" value="id" /> ID</label>
+				<label><input type="checkbox" name="name" value="name" /> Name</label>
+				<label
+					><input type="checkbox" name="price" value="price" /> Price</label
+				>
+				<button type="submit">Submit</button>
+			</form>
 
-      <div id="tierTable" class="table-container">
-        <div class="placeholder">No table generated yet</div>
-      </div>
-    </div>
+			<div id="tierTable" class="table-container">
+				<div class="placeholder">No table generated yet</div>
+			</div>
+		</div>
 
-    <div class="container">
-      <form id="socialNetworkForm" data-table="socialNetwork">
-        <h2>Social Networks</h2>
-        <label><input type="checkbox" name="id" value="id" /> ID</label>
-        <label><input type="checkbox" name="name" value="name" /> Name</label>
-        <button type="submit">Submit</button>
-      </form>
+		<div class="container">
+			<form id="socialNetworkForm" data-table="socialNetwork">
+				<h2>Social Networks</h2>
+				<label><input type="checkbox" name="id" value="id" /> ID</label>
+				<label><input type="checkbox" name="name" value="name" /> Name</label>
+				<button type="submit">Submit</button>
+			</form>
 
-      <div id="socialNetworkTable" class="table-container">
-        <div class="placeholder">No table generated yet</div>
-      </div>
-    </div>
-</body>
+			<div id="socialNetworkTable" class="table-container">
+				<div class="placeholder">No table generated yet</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<form id="brandForm" data-table="brand">
+				<h2>Brands</h2>
+				<label><input type="checkbox" name="id" value="id" /> ID</label>
+				<label><input type="checkbox" name="name" value="name" /> Name</label>
+				<label
+					><input type="checkbox" name="email" value="email" /> Email</label
+				>
+				<label
+					><input type="checkbox" name="passwordHash" value="passwordHash" />
+					Password Hash</label
+				>
+				<label
+					><input type="checkbox" name="phone" value="phone" /> Phone</label
+				>
+				<label><input type="checkbox" name="tier" value="tier" /> Tier</label>
+				<label
+					><input type="checkbox" name="paymentDue" value="paymentDue" /> Due
+					Payment?</label
+				>
+				<button type="submit">Submit</button>
+			</form>
+
+			<div id="brandTable" class="table-container">
+				<div class="placeholder">No table generated yet</div>
+			</div>
+		</div>
+	</body>
+</html>
