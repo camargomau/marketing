@@ -10,7 +10,7 @@
 		<script type="text/javascript" src="scripts/tableFromCheckbox.js"></script>
 	</head>
 	<body>
-		<h1>Read (checkboxes; no nesting)</h1>
+		<h1>Query (checkboxes; no nesting)</h1>
 
 		<div class="container">
 			<form id="tierForm" data-table="tier">
@@ -20,6 +20,8 @@
 				<label
 					><input type="checkbox" name="price" value="price" /> Price</label
 				>
+				<h3>ID (empty for everything):</h3>
+				<textarea name="tierId" id="tierId" cols="10" rows="1"></textarea>
 				<button type="submit">Submit</button>
 			</form>
 
@@ -30,9 +32,11 @@
 
 		<div class="container">
 			<form id="socialNetworkForm" data-table="socialNetwork">
-				<h2>Social Networks</h2>
+				<h2>Social networks</h2>
 				<label><input type="checkbox" name="id" value="id" /> ID</label>
 				<label><input type="checkbox" name="name" value="name" /> Name</label>
+				<h3>ID (empty for everything):</h3>
+				<textarea name="socialNetworkId" id="socialNetworkId" cols="10" rows="1"></textarea>
 				<button type="submit">Submit</button>
 			</form>
 
@@ -41,7 +45,7 @@
 			</div>
 		</div>
 
-		<div id="brandFormContainer" class="container">
+		<div class="container">
 			<form id="brandForm" data-table="brand">
 				<h2>Brands</h2>
 				<label><input type="checkbox" name="id" value="id" /> ID</label>
@@ -59,8 +63,10 @@
 
 				<label
 					><input type="checkbox" name="paymentDue" value="paymentDue" /> Due
-					Payment?</label
+					Payment</label
 				>
+				<h3>ID (empty for everything):</h3>
+				<textarea name="brandId" id="brandId" cols="10" rows="1"></textarea>
 				<button type="submit">Submit</button>
 			</form>
 

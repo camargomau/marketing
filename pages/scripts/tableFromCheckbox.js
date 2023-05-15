@@ -20,12 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			const columns = Array.from(checkboxes, (checkbox) => checkbox.value)
 
 			const query = `
-        query {
-          read${table.charAt(0).toUpperCase() + table.slice(1)} {
+        query($searchedId: Int) {
+          read${table.charAt(0).toUpperCase() + table.slice(1)}(id: $searchedId) {
             ${columns.join("\n")}
           }
         }
       `
+			const searchedId = (document.querySelector(`#${table}Id`).value) ? parseInt(document.querySelector(`#${table}Id`).value) : null;
 
 			// Send a POST request to the GraphQL server with the query string in the body
 			fetch("http://localhost:4000/graphql", {
@@ -34,7 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
 					"Content-Type": "application/json"
 				},
 				body: JSON.stringify({
-					query: query
+					query: query,
+					variables: { searchedId: searchedId }
 				})
 			})
 				// Parse the response as JSON
