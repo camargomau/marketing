@@ -10,7 +10,7 @@
 		<script type="text/javascript" src="scripts/jsonToTable.js"></script>
 	</head>
 	<body>
-		<h1>Query (read)</h1>
+		<h1>Read (no nesting; forms)</h1>
 
 		<div class="container">
 			<form id="tierForm" data-table="tier">
@@ -41,7 +41,7 @@
 			</div>
 		</div>
 
-		<div class="container">
+		<div id="brandFormContainer" class="container">
 			<form id="brandForm" data-table="brand">
 				<h2>Brands</h2>
 				<label><input type="checkbox" name="id" value="id" /> ID</label>
@@ -56,7 +56,7 @@
 				<label
 					><input type="checkbox" name="phone" value="phone" /> Phone</label
 				>
-				<label><input type="checkbox" name="tier" value="tier" /> Tier</label>
+
 				<label
 					><input type="checkbox" name="paymentDue" value="paymentDue" /> Due
 					Payment?</label
