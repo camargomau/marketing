@@ -1,6 +1,6 @@
 {
 	"db": {
-		"host": "localhost",
+		"host": "192.168.0.101",
 		"port": 3306,
 		"user": "psycake",
 		"password": "root",
