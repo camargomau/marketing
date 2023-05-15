@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			// Find the corresponding div for the table
 			const tableDiv = document.querySelector(`#${table}Table`);
 
-			const query = document.querySelector(`#${table}JSON`).value;
+			const query = document.querySelector(`#${table}Json`).value;
 
 			// Send a POST request to the GraphQL server with the query string in the body
 			fetch("http://localhost:4000/graphql", {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					query: query,
+					query: query
 				}),
 			})
 				// Parse the response as JSON
