@@ -52,6 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
 				})
 				.catch((error) => {
 					console.error(error)
+					tableDiv.innerHTML = `
+					<div class="placeholder">
+						<h4>Error: check console for more details</h4>
+					</div>
+					`
 				})
 		})
 	})
