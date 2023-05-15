@@ -21,12 +21,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			const query = `
         query($searchedId: Int) {
-          read${table.charAt(0).toUpperCase() + table.slice(1)}(id: $searchedId) {
+          read${
+						table.charAt(0).toUpperCase() + table.slice(1)
+					}(id: $searchedId) {
             ${columns.join("\n")}
           }
         }
       `
-			const searchedId = (document.querySelector(`#${table}Id`).value) ? parseInt(document.querySelector(`#${table}Id`).value) : null;
+			const searchedId = document.querySelector(`#${table}Id`).value
+				? parseInt(document.querySelector(`#${table}Id`).value)
+				: null
 
 			// Send a POST request to the GraphQL server with the query string in the body
 			fetch("http://localhost:4000/graphql", {
