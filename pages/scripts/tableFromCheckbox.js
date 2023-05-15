@@ -20,14 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			const columns = Array.from(checkboxes, (checkbox) => checkbox.value)
 
 			const query = `
-        query($searchedId: Int) {
-          read${
-						table.charAt(0).toUpperCase() + table.slice(1)
-					}(id: $searchedId) {
-            ${columns.join("\n")}
-          }
-        }
-      `
+				query($searchedId: Int) {
+					read${ table.charAt(0).toUpperCase() + table.slice(1) }(id: $searchedId) {
+						${columns.join("\n")}
+          			}
+        		}
+      		`
+
 			const searchedId = document.querySelector(`#${table}Id`).value
 				? parseInt(document.querySelector(`#${table}Id`).value)
 				: null
