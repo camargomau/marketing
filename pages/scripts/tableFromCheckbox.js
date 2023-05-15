@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			const query = `
 				query($searchedId: Int) {
-					read${ table.charAt(0).toUpperCase() + table.slice(1) }(id: $searchedId) {
+					read${table.charAt(0).toUpperCase() + table.slice(1)}(id: $searchedId) {
 						${columns.join("\n")}
           			}
         		}

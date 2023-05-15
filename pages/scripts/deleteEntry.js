@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			const mutation = `
 				mutation($searchedId: Int!) {
-					delete${ table.charAt(0).toUpperCase() + table.slice(1) }(id: $searchedId) {
+					delete${table.charAt(0).toUpperCase() + table.slice(1)}(id: $searchedId) {
 						id
           			}
         		}
@@ -37,9 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					// Error handling's different from normal queries
 					if (!data.errors) {
-						tableDiv.innerHTML = `
+						tableDiv.innerHTML =
+							`
 						<div class="placeholder">
-							<h4>Success: entry with ID ` + searchedId + ` deleted</h4>
+							<h4>Success: entry with ID ` +
+							searchedId +
+							` deleted</h4>
 						</div>
 						`
 					} else {

@@ -6,7 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Marketing: Query (C)</title>
 		<link rel="stylesheet" href="styles.css" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter"/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Inter"
+		/>
 		<script type="text/javascript" src="scripts/buildTable.js"></script>
 		<script type="text/javascript" src="scripts/tableFromCheckbox.js"></script>
 	</head>
@@ -18,13 +21,18 @@
 			<form id="tierForm" data-table="tier">
 				<h2>Tiers</h2>
 				<h3>Columns to query:</h3>
+
 				<label><input type="checkbox" name="id" value="id" /> ID</label>
+
 				<label><input type="checkbox" name="name" value="name" /> Name</label>
+
 				<label
 					><input type="checkbox" name="price" value="price" /> Price</label
 				>
+
 				<h3>ID (empty for everything):</h3>
 				<textarea name="tierId" id="tierId" cols="10" rows="1"></textarea>
+
 				<button type="submit">Submit</button>
 			</form>
 
@@ -37,8 +45,11 @@
 			<form id="socialNetworkForm" data-table="socialNetwork">
 				<h2>Social networks</h2>
 				<h3>Columns to query:</h3>
+
 				<label><input type="checkbox" name="id" value="id" /> ID</label>
+
 				<label><input type="checkbox" name="name" value="name" /> Name</label>
+
 				<h3>ID (empty for everything):</h3>
 				<textarea
 					name="socialNetworkId"
@@ -46,6 +57,7 @@
 					cols="10"
 					rows="1"
 				></textarea>
+
 				<button type="submit">Submit</button>
 			</form>
 
@@ -58,15 +70,20 @@
 			<form id="brandForm" data-table="brand">
 				<h2>Brands</h2>
 				<h3>Columns to query:</h3>
+
 				<label><input type="checkbox" name="id" value="id" /> ID</label>
+
 				<label><input type="checkbox" name="name" value="name" /> Name</label>
+
 				<label
 					><input type="checkbox" name="email" value="email" /> Email</label
 				>
+
 				<label
 					><input type="checkbox" name="passwordHash" value="passwordHash" />
 					Password Hash</label
 				>
+
 				<label
 					><input type="checkbox" name="phone" value="phone" /> Phone</label
 				>
@@ -75,8 +92,10 @@
 					><input type="checkbox" name="paymentDue" value="paymentDue" /> Due
 					Payment</label
 				>
+
 				<h3>ID (empty for everything):</h3>
 				<textarea name="brandId" id="brandId" cols="10" rows="1"></textarea>
+
 				<button type="submit">Submit</button>
 			</form>
 
