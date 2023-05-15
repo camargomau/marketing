@@ -2,10 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Store all forms with the data-table attribute
 	const forms = document.querySelectorAll("form[data-table]")
 
-	// Loop through all forms
 	forms.forEach((form) => {
 		form.addEventListener("submit", function (event) {
-			// Prevent the form from submitting and reloading the page
 			event.preventDefault()
 
 			// data-table stores the table name that will be used to query
@@ -15,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			const query = document.querySelector(`#${table}Json`).value
 
-			// Send a POST request to the GraphQL server with the query string in the body
+			// Send the POST request
 			fetch("http://localhost:4000/graphql", {
 				method: "POST",
 				headers: {
