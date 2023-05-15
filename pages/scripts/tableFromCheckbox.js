@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				// Put the JSON table into the div
 				.then((data) => {
 					console.log(data)
-					tableDiv.innerHTML = jsonToTable(data)
+					tableDiv.innerHTML = buildTable(data)
 				})
 				.catch((error) => {
 					console.error(error)
