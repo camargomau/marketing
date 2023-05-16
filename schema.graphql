@@ -69,6 +69,34 @@ input BrandInput {
 	paymentDue: Boolean
 }
 
+type BrandComment {
+	id: ID
+	fkUserPost: Int
+	userPost: UserPost
+	dateTime: String
+	publicReaction: Float
+}
+
+input BrandCommentInput {
+	fkUserPost: Int
+	dateTime: String
+	publicReaction: Float
+}
+
+type BrandPost {
+	id: ID
+	fkBrandSocial: Int
+	brandSocial: BrandSocial
+	dateTime: String
+	publicReaction: Float
+}
+
+input BrandPostInput {
+	fkBrandSocial: Int
+	dateTime: String
+	publicReaction: Float
+}
+
 type BrandSocial {
 	id: ID
 	"""
@@ -106,6 +134,63 @@ input BrandSocialInput {
 	creationDate: String
 }
 
+type Country {
+	id: ID
+	name: String
+}
+
+input CountryInput {
+	name: String
+}
+
+type Interaction {
+	id: ID
+	amount: Int
+	fkInteractionType: Int
+	interactionType: InteractionType
+	fkBrandPost: Int
+	brandPost: BrandPost
+	fkBrandComment: Int
+	brandComment: BrandComment
+	fkUserPost: Int
+	userPost: UserPost
+	fkUserComment: Int
+	userComment: UserComment
+}
+
+input InteractionInput {
+	amount: Int
+	fkInteractionType: Int
+	fkBrandPost: Int
+	fkBrandComment: Int
+	fkUserPost: Int
+	fkUserComment: Int
+}
+
+type InteractionType {
+	id: ID
+	name: String
+}
+
+input InteractionTypeInput {
+	name: String
+}
+
+type Lexical {
+	id: ID
+	fkBrandSocial: Int
+	brandSocial: BrandSocial
+	fkWordTrend: Int
+	wordTrend: WordTrend
+	frequency: Int
+}
+
+input LexicalInput {
+	fkBrandSocial: Int
+	fkWordTrend: Int
+	frequency: Int
+}
+
 type SocialNetwork {
 	id: ID
 	"""
@@ -136,4 +221,97 @@ type Tier {
 input TierInput {
 	name: String
 	price: Int
+}
+
+type User {
+	id: ID
+	name: String
+	fkCountry: Int
+	country: Country
+}
+
+input UserInput {
+	name: String
+	fkCountry: Int
+}
+
+type UserBrand {
+	id: ID
+	fkUser: Int
+	user: User
+	fkBrand: Int
+	brand: Brand
+	sentiment: Float
+}
+
+input UserBrandInput {
+	fkUser: Int
+	fkBrand: Int
+	sentiment: Float
+}
+
+type UserComment {
+	id: ID
+	fkBrandPost: Int
+	brandPost: BrandPost
+	fkUser: Int
+	user: User
+	dateTime: String
+	sentiment: Float
+}
+
+input USerCommentInput {
+	fkBrandPost: Int
+	fkUser: Int
+	dateTime: String
+	sentiment: Float
+}
+
+type UserPost {
+	id: ID
+	fkUserBrand: Int
+	userBrand: UserBrand
+	fkSocialNetwork: Int
+	socialNetwork: SocialNetwork
+	dateTime: String
+	sentiment: Float
+}
+
+input UserPostInput {
+	fkUserBrand: Int
+	fkSocialNetwork: Int
+	dateTime: String
+	sentiment: Float
+}
+
+type UserSocial {
+	id: ID
+	fkUser: Int
+	user: User
+	fkSocialNetwork: Int
+	socialNetwork: SocialNetwork
+	username: String
+	creationDate: String
+}
+
+input UserSocialInput {
+	fkUser: Int
+	fkSocialNetwork: Int
+	username: String
+	creationDate: String
+}
+
+type WordTrend {
+	id: ID
+	word: String
+	scoreWeek: Int
+	scoreMonth: Int
+	scoreYear: Int
+}
+
+input WordTrendInput {
+	word: String
+	scoreWeek: Int
+	scoreMonth: Int
+	scoreYear: Int
 }
