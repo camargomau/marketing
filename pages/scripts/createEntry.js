@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
         		}
       		`
 
+			// TODO: Replace with queryGraphQL() and make it work
+			/*
 			fetch("http://localhost:4000/graphql", {
 				method: "POST",
 				headers: {
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						<h4>Error: check console for more details</h4>
 					</div>
 					`
-				})
+				})*/
 		})
 	})
 })

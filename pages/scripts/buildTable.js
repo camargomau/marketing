@@ -1,7 +1,5 @@
 const buildTable = (rawJson) => {
-	const tableJson = rawJson.data[Object.keys(rawJson.data)[0]]
-
-	createCode = (tableJson) => {
+	tableCode = (tableJson) => {
 		let tableHtml = "<table><tr>"
 
 		// Add row of headers
@@ -23,7 +21,7 @@ const buildTable = (rawJson) => {
 					tableHtml += "<td>" + entry[column] + "</td>"
 					// If it is an object, recursively put a table inside
 				} else {
-					tableHtml += "<td>" + createCode([value], "") + "</td>"
+					tableHtml += "<td>" + tableCode([value], "") + "</td>"
 				}
 			}
 			tableHtml += "</tr>"
@@ -33,5 +31,6 @@ const buildTable = (rawJson) => {
 		return tableHtml
 	}
 
-	return createCode(tableJson)
+	const tableJson = rawJson.data[Object.keys(rawJson.data)[0]]
+	return tableCode(tableJson)
 }
