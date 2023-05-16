@@ -15,75 +15,25 @@
 		<script type="text/javascript" src="scripts/tableFromJson.js"></script>
 	</head>
 	<body>
-		<h1>Read</h1>
-		<h2>(JSON; nesting)</h2>
+		<h1>General JSON</h1>
 
 		<div class="container">
-			<form id="tierForm" data-table="tier">
-				<h2>Tier</h2>
-				<label for="tierJson">JSON:</label>
-				<textarea name="tierJson" id="tierJson" cols="38" rows="10"></textarea
+			<form id="jsonForm" data-table="tier">
+				<h2>JSON:</h2>
+				<textarea name="json" id="json" cols="38" rows="25"></textarea
 				><br /><br />
 				<button type="submit">Query</button>
 			</form>
 
-			<div id="tierTable" class="table-container">
+			<div id="table" class="table-container">
 				<div class="placeholder">No table generated yet</div>
 			</div>
-		</div>
 
-		<div class="container">
-			<form id="socialNetworkForm" data-table="socialNetwork">
-				<h2>Social Network</h2>
-				<label for="socialNetworkJson">JSON:</label>
-				<textarea
-					name="socialNetworkJson"
-					id="socialNetworkJson"
-					cols="38"
-					rows="10"
-				></textarea>
-				<button type="submit">Query</button>
+			<form id="responseForm" data-table="tier">
+				<h2>Response:</h2>
+				<textarea name="response" id="response" cols="38" rows="30" disabled></textarea
+				><br /><br />
 			</form>
-
-			<div id="socialNetworkTable" class="table-container">
-				<div class="placeholder">No table generated yet</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<form id="brandForm" data-table="brand">
-				<h2>Brand</h2>
-				<label for="brandJson">JSON:</label>
-				<textarea
-					name="brandJson"
-					id="brandJson"
-					cols="38"
-					rows="10"
-				></textarea>
-				<button type="submit">Query</button>
-			</form>
-
-			<div id="brandTable" class="table-container">
-				<div class="placeholder">No table generated yet</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<form id="brandSocialForm" data-table="brandSocial">
-				<h2>Brand Social Network</h2>
-				<label for="brandSocialJson">JSON:</label>
-				<textarea
-					name="brandSocialJson"
-					id="brandSocialJson"
-					cols="38"
-					rows="10"
-				></textarea>
-				<button type="submit">Query</button>
-			</form>
-
-			<div id="brandSocialTable" class="table-container">
-				<div class="placeholder">No table generated yet</div>
-			</div>
 		</div>
 	</body>
 </html>

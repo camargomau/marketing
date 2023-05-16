@@ -6,17 +6,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		form.addEventListener("submit", function (event) {
 			event.preventDefault()
 
-			// data-table stores the table name that will be used to query
-			const table = form.dataset.table
 			// Find the corresponding div for the table
-			const tableDiv = document.querySelector(`#${table}Table`)
+			const tableDiv = document.getElementById("table")
+			const responseArea = document.getElementById("response")
 
-			const query = document.querySelector(`#${table}Json`).value
+			const query = document.getElementById("json").value
 
 			queryGraphQL(
 				query,
 				null,
-				(data) => tableDiv.innerHTML = buildTable(data),
+				(data) => {
+					tableDiv.innerHTML = buildTable(data)
+					responseArea.textContent = JSON.stringify(data, null, 2)
+				},
 				(error) => tableDiv.innerHTML = `
 					<div class="placeholder">
 						<h4>Error: ` + error.message + `</h4>
