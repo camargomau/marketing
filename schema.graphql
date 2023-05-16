@@ -1,45 +1,26 @@
 type Query {
-	readTier(id: Int): [Tier]
 	readBrand(id: Int): [Brand]
-	readSocialNetwork(id: Int): [SocialNetwork]
 	readBrandSocial(id: Int): [BrandSocial]
+	readSocialNetwork(id: Int): [SocialNetwork]
+	readTier(id: Int): [Tier]
 }
 
 type Mutation {
-	createTier(input: TierInput!): Tier!
-	deleteTier(id: Int!): Tier!
-	updateTier(id: Int!, input: TierInput!): Tier!
-
 	createBrand(input: BrandInput!): Brand!
 	deleteBrand(id: Int!): Brand!
 	updateBrand(id: Int!, input: BrandInput!): Brand!
+
+	createBrandSocial(input: BrandSocialInput!): BrandSocial!
+	deleteBrandSocial(id: Int!): BrandSocial!
+	updateBrandSocial(id: Int!, input: BrandSocialInput!): BrandSocial!
 
 	createSocialNetwork(input: SocialNetworkInput!): SocialNetwork!
 	deleteSocialNetwork(id: Int!): SocialNetwork!
 	updateSocialNetwork(id: Int!, input: SocialNetworkInput!): SocialNetwork!
 
-	createBrandSocial(input: BrandSocialInput!): BrandSocial!
-	deleteBrandSocial(id: Int!): BrandSocial!
-	updateBrandSocial(id: Int!, input: BrandSocialInput!): BrandSocial!
-}
-
-type Tier {
-	id: ID
-	"""
-	The tier's name
-	@example "Basic"
-	"""
-	name: String
-	"""
-	The tier's price per month, in cents
-	@example "100"
-	"""
-	price: Int
-}
-
-input TierInput {
-	name: String
-	price: Int
+	createTier(input: TierInput!): Tier!
+	deleteTier(id: Int!): Tier!
+	updateTier(id: Int!, input: TierInput!): Tier!
 }
 
 type Brand {
@@ -88,19 +69,6 @@ input BrandInput {
 	paymentDue: Boolean
 }
 
-type SocialNetwork {
-	id: ID
-	"""
-	The social network's name
-	@example "Reddit"
-	"""
-	name: String
-}
-
-input SocialNetworkInput {
-	name: String
-}
-
 type BrandSocial {
 	id: ID
 	"""
@@ -136,4 +104,36 @@ input BrandSocialInput {
 	fkSocialNetwork: Int
 	username: String
 	creationDate: String
+}
+
+type SocialNetwork {
+	id: ID
+	"""
+	The social network's name
+	@example "Reddit"
+	"""
+	name: String
+}
+
+input SocialNetworkInput {
+	name: String
+}
+
+type Tier {
+	id: ID
+	"""
+	The tier's name
+	@example "Basic"
+	"""
+	name: String
+	"""
+	The tier's price per month, in cents
+	@example "100"
+	"""
+	price: Int
+}
+
+input TierInput {
+	name: String
+	price: Int
 }
