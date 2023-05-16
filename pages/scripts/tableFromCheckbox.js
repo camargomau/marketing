@@ -25,29 +25,16 @@ document.addEventListener("DOMContentLoaded", function () {
 				? parseInt(document.querySelector(`#${table}Id`).value)
 				: null
 
-			fetch("http://localhost:4000/graphql", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					query: query,
-					variables: { searchedId: searchedId }
-				})
-			})
-				.then((response) => response.json())
-				.then((data) => {
-					console.log(data)
-					tableDiv.innerHTML = buildTable(data)
-				})
-				.catch((error) => {
-					console.error(error)
-					tableDiv.innerHTML = `
+			queryGraphQL(
+				query,
+				{ searchedId: searchedId },
+				(data) => tableDiv.innerHTML = buildTable(data),
+				(error) => tableDiv.innerHTML = `
 					<div class="placeholder">
-						<h4>Error: check console for more details</h4>
+						<h4>Error: ` + error.message + `</h4>
 					</div>
-					`
-				})
+				`
+			)
 		})
 	})
 })
