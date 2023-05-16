@@ -25,18 +25,21 @@ document.addEventListener("DOMContentLoaded", function () {
 				{ searchedId: searchedId },
 				(data) => {
 					if (!data.errors) {
-					tableDiv.innerHTML =
-						`
+						tableDiv.innerHTML =
+							`
 					<div class="placeholder">
 						<h4>Success: entry with ID ` +
-						searchedId +
-						` deleted</h4>
+							searchedId +
+							` deleted</h4>
 					</div>
 					`
 					} else {
-						tableDiv.innerHTML = `
+						tableDiv.innerHTML =
+							`
 						<div class="placeholder">
-							<h4>Error: ` + data.errors[0].message + `</h4>
+							<h4>Error: ` +
+							data.errors[0].message +
+							`</h4>
 						</div>
 						`
 					}

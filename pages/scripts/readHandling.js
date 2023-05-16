@@ -28,12 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			queryGraphQL(
 				query,
 				{ searchedId: searchedId },
-				(data) => tableDiv.innerHTML = buildTable(data),
-				(error) => tableDiv.innerHTML = `
+				(data) => (tableDiv.innerHTML = buildTable(data)),
+				(error) =>
+					(tableDiv.innerHTML =
+						`
 					<div class="placeholder">
-						<h4>Error: ` + error.message + `</h4>
+						<h4>Error: ` +
+						error.message +
+						`</h4>
 					</div>
-				`
+				`)
 			)
 		})
 	})

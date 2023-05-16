@@ -19,7 +19,7 @@ h3 {
 }
 
 textarea,
-input[type=text] {
+input[type="text"] {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;

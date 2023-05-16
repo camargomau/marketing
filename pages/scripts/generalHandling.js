@@ -19,11 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
 					tableDiv.innerHTML = buildTable(data)
 					responseArea.textContent = JSON.stringify(data, null, 2)
 				},
-				(error) => tableDiv.innerHTML = `
+				(error) =>
+					(tableDiv.innerHTML =
+						`
 					<div class="placeholder">
-						<h4>Error: ` + error.message + `</h4>
+						<h4>Error: ` +
+						error.message +
+						`</h4>
 					</div>
-				`
+				`)
 			)
 		})
 	})
